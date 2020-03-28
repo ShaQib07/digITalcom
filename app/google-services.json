@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "567595638935",
+    "firebase_url": "https://digital-com-e8f25.firebaseio.com",
+    "project_id": "digital-com-e8f25",
+    "storage_bucket": "digital-com-e8f25.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:567595638935:android:18b76dea037dc29f3f49d2",
+        "android_client_info": {
+          "package_name": "com.shakib.digitalcom"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "567595638935-4449qusvouhiisiri5ekvq9fi93oo6k7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.shakib.digitalcom",
+            "certificate_hash": "6ca15f32c31dc2fe64721d9f4f4d8a37b151d093"
+          }
+        },
+        {
+          "client_id": "567595638935-4v8qniulkqofkibu73uo3l4mgtpe2nqt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtMjJoh9ogCQJN0zNlkJEGRceqKjPU-W4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "567595638935-4v8qniulkqofkibu73uo3l4mgtpe2nqt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

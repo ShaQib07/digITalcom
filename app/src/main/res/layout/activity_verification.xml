@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vAuthViewModel"
+            type="com.shakib.digitalcom.viewmodel.AuthViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#EAF1A6"
+        android:orientation="vertical"
+        tools:context=".view.VerificationActivity">
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="#EAF1A6"
+            android:contentDescription="@string/back_button"
+            android:src="@drawable/ic_back" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/welcome"
+            android:src="@drawable/welcome" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/otp_msg"
+            android:textAlignment="center"
+            android:textColor="#472F2F"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            android:typeface="sans" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="80dp"
+            android:layout_marginVertical="8dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_otp"
+                android:text="@={vAuthViewModel.otp}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/otp_hint"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:maxLength="6" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_sign_in"
+            android:onClick="@{() -> vAuthViewModel.onSignInButtonClick()}"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="100dp"
+            android:text="@string/sign_in" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar_v"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp" />
+
+
+    </LinearLayout>
+</layout>

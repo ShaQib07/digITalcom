@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="sAuthViewModel"
+            type="com.shakib.digitalcom.viewmodel.AuthViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#EAF1A6"
+        tools:context=".view.SignUpActivity">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="28sp"
+            android:textColor="#472F2F"
+            android:typeface="sans"
+            android:textStyle="italic|bold"
+            android:text="@string/login_title"
+            android:layout_marginTop="100dp"
+            android:layout_marginStart="16dp"
+            android:transitionName="title_text"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="#472F2F"
+            android:typeface="sans"
+            android:textStyle="italic"
+            android:text="@string/sign_up_text"
+            android:layout_marginStart="16dp"
+            android:transitionName="sub_title_text"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:layout_marginHorizontal="16dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txt_username"
+                android:text="@={sAuthViewModel.userName}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionNext"
+                android:hint="@string/username"
+                android:singleLine="true"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:layout_marginHorizontal="16dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txt_designation"
+                android:text="@={sAuthViewModel.designation}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionNext"
+                android:hint="@string/designation"
+                android:singleLine="true"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:layout_marginHorizontal="16dp"
+            android:transitionName="mobile_field"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txt_mobile"
+                android:text="@={sAuthViewModel.phoneNumber}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionDone"
+                android:inputType="phone"
+                android:maxLength="11"
+                android:hint="@string/mobile"
+                android:singleLine="true"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="#472F2F"
+            android:typeface="sans"
+            android:textStyle="italic"
+            android:text="@string/otp"
+            android:textAlignment="center"
+            android:layout_marginHorizontal="16dp"
+            android:transitionName="otp_text"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_send_otp_sign_up"
+            android:onClick="@{() -> sAuthViewModel.onSignUpSendOtpButtonClick()}"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="@string/otp_button"
+            android:layout_marginHorizontal="50dp"
+            android:transitionName="otp_btn"/>
+
+        <ProgressBar
+            android:id="@+id/progress_bar_s"
+            android:visibility="gone"
+            android:layout_marginVertical="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+</layout>

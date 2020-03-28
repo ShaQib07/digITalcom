@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">digITal com.</string>
+    <string name="login_title">Let\'s get started…</string>
+    <string name="login_text">Sign In to continue</string>
+    <string name="username">Username</string>
+    <string name="designation">Designation</string>
+    <string name="mobile">Mobile No.</string>
+    <string name="otp">*An OTP will be sent to your mobile number for verification purpose</string>
+    <string name="otp_button">SEND OTP</string>
+    <string name="otp_hint">OTP</string>
+    <string name="otp_msg">Wait for the code we sent you. The code will be detected automatically. But you can put it manually as well.</string>
+    <string name="sign_in">Sign In</string>
+    <string name="new_user">New user? <u>Click here to Sign up.</u></string>
+    <string name="sign_up_text">Sign Up to continue</string>
+    <string name="welcome">Welcome</string>
+    <string name="back_button">Back button</string>
+</resources>
