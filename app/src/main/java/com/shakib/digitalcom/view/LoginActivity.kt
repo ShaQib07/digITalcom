@@ -12,6 +12,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.shakib.digitalcom.R
 import com.shakib.digitalcom.databinding.ActivityLoginBinding
+import com.shakib.digitalcom.utils.Constants
+import com.shakib.digitalcom.utils.SharedPreferencesSingleton
 import com.shakib.digitalcom.utils.showToast
 import com.shakib.digitalcom.utils.toggleVisibility
 import com.shakib.digitalcom.viewmodel.AuthViewModel
@@ -26,9 +28,12 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         // Binding View with ViewModels
-        val binding: ActivityLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+        val binding: ActivityLoginBinding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         authViewModel = ViewModelProvider(this).get(AuthViewModel::class.java)
         binding.lAuthViewModel = authViewModel
+
+        SharedPreferencesSingleton.init(this)
 
 
         // Calling ViewModel Functions
@@ -48,6 +53,8 @@ class LoginActivity : AppCompatActivity() {
         authViewModel.getProceedToVerification().observe(this, Observer {
             if (it){
                 Log.i("INFO", "Proceeding for verification")
+                Log.i("INFO", "Phone number: "+Constants.PHONE)
+                SharedPreferencesSingleton.saveString(Constants.KEY, Constants.PHONE)
                 startActivity(Intent(this, VerificationActivity::class.java))
             }
         })

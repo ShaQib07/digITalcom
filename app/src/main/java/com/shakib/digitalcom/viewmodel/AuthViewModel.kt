@@ -9,6 +9,7 @@ import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
+import com.shakib.digitalcom.model.Teacher
 import com.shakib.digitalcom.repository.TeacherRepository
 import com.shakib.digitalcom.utils.Constants
 import com.shakib.digitalcom.utils.Constants.PHONE
@@ -44,9 +45,9 @@ class AuthViewModel: ViewModel() {
         } else {
             teachersRepository.teacherExists("+88$phoneNumber").observeForever {
                 if (it){
+                    PHONE += "+88$phoneNumber"
                     proceedToVerification.value = true
                     isProgressbarVisible.value = false
-                    PHONE += "+88$phoneNumber"
                 } else{
                     Log.i("INFO", "Inside view model method: ${teachersRepository.getTeachers().value}")
                     toastMsg.value = "Oops! This number is not registered, Sign Up first"
@@ -99,7 +100,7 @@ class AuthViewModel: ViewModel() {
     fun sendVerificationCode() {
         Log.i("INFO", "Sending verification code")
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
-            PHONE!!,
+            PHONE,
             60,
             TimeUnit.SECONDS,
             TaskExecutors.MAIN_THREAD,
@@ -157,6 +158,8 @@ class AuthViewModel: ViewModel() {
 
 
     // ViewModel Functions
+    fun getSavedUser() = teachersRepository.getSavedTeacher()
+
     fun getOpenSignUp(): LiveData<Boolean> = openSignUp
 
     fun getProceedToVerification(): LiveData<Boolean> = proceedToVerification

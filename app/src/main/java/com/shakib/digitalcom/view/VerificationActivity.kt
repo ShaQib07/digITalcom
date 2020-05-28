@@ -8,6 +8,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.shakib.digitalcom.R
 import com.shakib.digitalcom.databinding.ActivityVerificationBinding
+import com.shakib.digitalcom.utils.Constants
+import com.shakib.digitalcom.utils.SharedPreferencesSingleton
 import com.shakib.digitalcom.utils.showToast
 import com.shakib.digitalcom.utils.startHomeActivity
 import com.shakib.digitalcom.viewmodel.AuthViewModel
@@ -21,12 +23,14 @@ class VerificationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         // Binding View with ViewModels
-        val binding: ActivityVerificationBinding = DataBindingUtil.setContentView(this, R.layout.activity_verification)
+        val binding: ActivityVerificationBinding = ActivityVerificationBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         authViewModel = ViewModelProvider(this).get(AuthViewModel::class.java)
         binding.vAuthViewModel = authViewModel
 
         btn_back.setOnClickListener {onBackPressed()}
 
+        SharedPreferencesSingleton.init(this)
 
         // Calling ViewModel Functions
         authViewModel.sendVerificationCode()
@@ -34,6 +38,7 @@ class VerificationActivity : AppCompatActivity() {
         authViewModel.getProceedToHome().observe(this, Observer {
             if (it){
                 Log.i("INFO", "Proceeding for Home")
+                SharedPreferencesSingleton.saveBoolean(Constants.IS_VERIFIED_USER, true)
                 startHomeActivity()
             } else{
                 Log.i("INFO", "Proceeding for Home else")

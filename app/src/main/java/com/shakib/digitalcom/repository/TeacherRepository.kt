@@ -43,19 +43,28 @@ class TeacherRepository {
         return teachersData
     }
 
+    fun getSavedTeacher(){
+
+        teachersReference.child(Constants.PHONE).addListenerForSingleValueEvent(object : ValueEventListener{
+            override fun onCancelled(p0: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val teacher: Teacher? = dataSnapshot.getValue(Teacher::class.java)
+                Log.i("INFO", "Inside get saved teacher -> onDataChange -> TeacherName: "+teacher?.name)
+                Constants.CURRENT_USER = teacher
+            }
+        })
+    }
+
     fun teacherExists(phoneNumber: String): LiveData<Boolean> {
-        Log.i("INFO", "Inside repo: teacherExists")
+
         val isTeacherExists = MutableLiveData<Boolean>()
         teachersReference.child(phoneNumber).addListenerForSingleValueEvent(object : ValueEventListener{
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                Log.i("INFO", "Inside value event listener -> onDataChange")
-                if (dataSnapshot.exists()){
-                    isTeacherExists.value = true
-                    Log.i("INFO", "Changed: ${isTeacherExists.value}")
-                } else{
-                    isTeacherExists.value = false
-                    Log.i("INFO", "Changed: ${isTeacherExists.value}")
-                }
+
+                isTeacherExists.value = dataSnapshot.exists()
             }
 
             override fun onCancelled(databaseError: DatabaseError) {}

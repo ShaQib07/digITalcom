@@ -4,6 +4,11 @@ import com.shakib.digitalcom.model.Teacher
 
 object Constants {
     const val SHARED_PREF = "Remember User"
+    const val KEY = "userID"
+    const val IS_VERIFIED_USER = "isVerified"
     var CURRENT_USER: Teacher? = null
-    var PHONE: String? = null
+    var PHONE: String = ""
+
+    const val ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTSzFkYTIxNTk0ZTU5MDU3OWJhNzc1NGUwOTg4ZjhjM2I0LTE1OTA2Njc1MzgiLCJpc3MiOiJTSzFkYTIxNTk0ZTU5MDU3OWJhNzc1NGUwOTg4ZjhjM2I0Iiwic3ViIjoiQUM1YWI0Y2ZhZWIwNTcyNmMzMmY1MDRjMTg3MmMwNDRiMiIsImV4cCI6MTU5MDY3MTEzOCwiZ3JhbnRzIjp7ImlkZW50aXR5IjoiU2hha2liIiwidmlkZW8iOnsicm9vbSI6Ik15Um9vbSJ9fX0.hi4VYHSta6cZ3pJwywCeaKiPweLxZXMznjbq2wY1t48"
+    const val ACCESS_TOKEN_TWO = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTSzFkYTIxNTk0ZTU5MDU3OWJhNzc1NGUwOTg4ZjhjM2I0LTE1OTA2NjU5NjgiLCJpc3MiOiJTSzFkYTIxNTk0ZTU5MDU3OWJhNzc1NGUwOTg4ZjhjM2I0Iiwic3ViIjoiQUM1YWI0Y2ZhZWIwNTcyNmMzMmY1MDRjMTg3MmMwNDRiMiIsImV4cCI6MTU5MDY2OTU2OCwiZ3JhbnRzIjp7ImlkZW50aXR5IjoiSGFzaWIiLCJ2aWRlbyI6eyJyb29tIjoiTXlSb29tIn19fQ.8PpugY0YVm8bDlGoTdzqJ652_nda6CyjRbGLv_jTskk"
 }
